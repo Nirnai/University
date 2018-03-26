@@ -1,0 +1,12 @@
+<launch>
+
+  <!--<include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch"/>-->
+  <include file="$(find image_processing_pkg)/launch/image_processing_pkg.launch"/>
+  <include file="$(find object_detection)/launch/object_detection.launch"/>
+
+  <!--<node pkg="communication" type="communication_node" name="communication_node"/>-->
+  <!--<node pkg="state_machine" type="state_machine_node" name="state_machine_node"/> -->
+  <!--<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" args="scan:=lidarscan"/>-->
+  <!--<node pkg="start_turtlebot" type="start_turtlebot_node" name="start_turtlebot_node"/>-->
+
+</launch>

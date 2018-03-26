@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="r1_robot">
+
+    <xacro:include filename="$(find r1_robot_description)/urdf/r1_robot.xacro" />
+
+        <link name="world" />
+
+    <xacro:single_joint_robot name= "robot1" xposition="0.0" yposition="0.0" />
+
+    <xacro:single_joint_robot name= "robot2" xposition="1.0" yposition="0.0" />
+
+</robot>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--LAUNCH A NODE TO PUBLISH AN STATIC TRANSFORMATION BETWEEN /map and /WORLD WITH A FREQ 100-->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_world" args="0 0 0 0 0 0 1 /map /world 100" />
+  <!--LAUNCH RVIZ NODE -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtle_vis)/launch/rvizConfigs/turtleTutorial.rviz"/>
+
+  <!--LAUNCH TURTLE VISUALIZATION NODE-->
+  <node name="turtle_vis_node" pkg="turtle_vis" type="turtle_vis_node"/>
+  <!--LAUNCH TURTLE CONTROL NODE. AS PART OF THIS NODE LOAD THE YAML FILE WITH THE GAIN PARAMETERS (SEE rvizConfigs/turtle_gains.yaml)-->
+  <node name="turtle_control_node" pkg="turtle_vis" type="turtle_control_node"/>
+  <rosparam command="load" file="$(find turtle_vis)/launch/rvizConfigs/turtle_gains.yaml" />
+  <!-- -->
+  <node name="turtle_set_position" pkg="turtle_vis" type="turtle_set_position"/>
+ 
+</launch>

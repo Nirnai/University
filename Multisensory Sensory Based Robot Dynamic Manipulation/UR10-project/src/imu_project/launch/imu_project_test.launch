@@ -1,0 +1,12 @@
+<launch>
+
+
+<node pkg="imu_project" type="tf_pub" name="tf_broadcaster" />
+<!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find imu_project)/launch/configs/imu.rviz"/> -->
+<node pkg="imu_project" type="imu_acc_pub" name="acc_publisher" />
+<!--<node pkg="msb_project" type="kalman_pub" name="kalman_pub" />-->
+<!-- <node pkg="imu_project" type="shake_sensor" name="shake_sensor" /> -->
+<!-- <node pkg="imu_project" type="pos_pub" name="pos_pub" /> -->
+
+
+</launch>

@@ -1,0 +1,9 @@
+geometry_msgs/Point rechts_unten_GF
+geometry_msgs/Point rechts_oben_GF
+geometry_msgs/Point links_unten_GF
+geometry_msgs/Point links_oben_GF
+
+geometry_msgs/Point rechts_unten_RF
+geometry_msgs/Point rechts_oben_RF
+geometry_msgs/Point links_unten_RF
+geometry_msgs/Point links_oben_RF

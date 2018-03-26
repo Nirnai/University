@@ -1,0 +1,4 @@
+<launch>
+	<!-- Let the simulated robot do something -->
+	<node name="image_processing_pkg" pkg="image_processing_pkg" type="image_processing_pkg" output="screen" />
+</launch>

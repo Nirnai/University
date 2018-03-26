@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>msd3dof_bringup</name>
+  <version>0.1.0</version>
+  <description>Launch files and scripts needed to bring up the ROS nodes of mass spring damper robot 3DOF Tutorial 4.</description>
+  <maintainer email="dean@tum.de">Emmanuel Dean</maintainer>
+  <license>Modified BSD</license>
+  <author email="dean@tum.de">Emmanuel Dean</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>joy</run_depend>
+
+
+</package>

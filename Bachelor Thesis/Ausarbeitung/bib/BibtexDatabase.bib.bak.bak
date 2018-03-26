@@ -1,0 +1,132 @@
+% This file was created with JabRef 2.11.
+% Encoding: Cp1252
+
+
+@InProceedings{Multipath,
+  Title                    = {A comprehensive method for multipath performance analysis of GNSS navigation signals},
+  Author                   = {Z. He and Y. Hu and J. Wu and J. Wang and J. Hou and K. Wang},
+  Booktitle                = {Signal Processing, Communications and Computing (ICSPCC), 2011 IEEE International Conference on},
+  Year                     = {2011},
+  Month                    = {Sept},
+  Pages                    = {1-6},
+  Doi                      = {10.1109/ICSPCC.2011.6061564},
+  Keywords                 = {error statistics;multipath channels;satellite navigation;GNSS navigation signals;comprehensive method;global navigation satellite system;multipath error envelope;multipath performance analysis;navigation signal design;user equivalent range error;Channel models;Computational modeling;Delay;Global Navigation Satellite Systems;Receivers;Reflection;Taylor expansion;correlator spacing;explicit expression method;signal to multipath ratio;statistical channel models;weighted running average multipath error envelope}
+}
+
+@Book{kammeyer,
+  Title                    = {Digitale Signalverarbeitung: Filterung und Spektralanalyse mit MATLAB-{\"U}bungen},
+  Author                   = {Kammeyer, K.D. and Kroschel, K.},
+  Publisher                = {Vieweg + Teubner},
+  Year                     = {2009},
+  Series                   = {Informations- und Kommunikationstechnik},
+  ISBN                     = {9783834806109}
+}
+
+@Article{kay1993fundamentals,
+  Title                    = {Fundamentals of statistical signal processing, volume I: estimation theory},
+  Author                   = {Kay, Steven M},
+  Year                     = {1993},
+  Publisher                = {Prentice Hall}
+}
+
+@Book{SignaleSysteme,
+  Title                    = {Signale und Systeme},
+  Author                   = {Le{\'o}n, Fernando Puente and J{\"a}kel, Holger},
+  Publisher                = {Walter de Gruyter GmbH \& Co KG},
+  Year                     = {2015}
+}
+
+@Article{Super-resolution,
+  Title                    = {Super-resolution TOA estimation with diversity for indoor geolocation},
+  Author                   = {Xinrong Li and K. Pahlavan},
+  Journal                  = {IEEE Transactions on Wireless Communications},
+  Year                     = {2004},
+  Month                    = {Jan},
+  Number                   = {1},
+  Pages                    = {224-234},
+  Volume                   = {3},
+  ISSN                     = {1536-1276},
+  Keywords                 = {bandwidth allocation;channel estimation;correlation methods;diversity reception;frequency response;indoor radio;matrix algebra;radio networks;radiowave propagation;time-domain analysis;MUSIC super-resolution;correlation matrix;correlation techniques;diversity combining techniques;forward-backward estimation;frequency diversity;frequency response;frequency-domain channel measurement;indoor geolocation applications;indoor radio propagation channels;signal bandwidth;spectrum estimation;super resolution time-of-arrival estimation;time diversity;time-domain analysis;wireless networks;Area measurement;Computer simulation;Delay estimation;Diversity reception;Frequency estimation;Indoor radio communication;Multiple signal classification;Signal resolution;Time domain analysis;Time of arrival estimation}
+}
+
+@InProceedings{Lindner_CRLB,
+  Title                    = {Influence of antenna array constellation on the accuracy of angle-of-arrival estimation in a multipath environment},
+  Author                   = {T. Lindner and N. Hadaschik and L. Patino-Studencka and J. Thielecke},
+  Booktitle                = {WSA 2015; 19th International ITG Workshop on Smart Antennas; Proceedings of},
+  Year                     = {2015},
+  Month                    = {March},
+  Pages                    = {1-5}
+}
+
+@Book{mengali1997synchronization,
+  Title                    = {Synchronization Techniques for Digital Receivers},
+  Author                   = {Mengali, U.},
+  Publisher                = {Springer US},
+  Year                     = {1997},
+  Series                   = {Applications of Communications Theory},
+  ISBN                     = {9780306457258},
+  Lccn                     = {97041674}
+}
+
+@Book{gps,
+  Title                    = {Global Positioning System: Signals, Measurements and Performance Second Edition},
+  Author                   = {Misra, Pratap and Enge, Per},
+  Publisher                = {Lincoln, MA: Ganga-Jamuna Press},
+  Year                     = {2006}
+}
+
+@InProceedings{nowak2014system,
+  Title                    = {System and signal design for an energy-efficient multi-frequency localization system},
+  Author                   = {Nowak, Thorsten and Hierold, Martin and Koelpin, Alexander and Hartmann, Markus and Troger, Hans-Martin and Thielecke, Jorn},
+  Booktitle                = {Wireless Sensors and Sensor Networks (WiSNet), 2014 IEEE Topical Conference on},
+  Year                     = {2014},
+  Organization             = {IEEE},
+  Pages                    = {55--57}
+}
+
+@Article{fd-filter,
+  Title                    = {Closed Form Variable Fractional Time Delay Using FFT},
+  Author                   = {S. C. Pei and Y. C. Lai},
+  Journal                  = {IEEE Signal Processing Letters},
+  Year                     = {2012},
+  Month                    = {May},
+  Number                   = {5},
+  Pages                    = {299-302},
+  Volume                   = {19},
+  ISSN                     = {1070-9908},
+  Keywords                 = {delay filters;fast Fourier transforms;frequency response;FFT;approximation error;closed form variable fractional time delay;conjugate symmetry;magnitude response;tunable frequency response;variable fractional delay filter;windowing method;Computational efficiency;Delay;Delay effects;Finite impulse response filter;Frequency response;Time domain analysis;Transfer functions;Fractional delay (FD) filter;windowing method}
+}
+
+@Article{smoothing,
+  Title                    = {On spatial smoothing for direction-of-arrival estimation of coherent signals},
+  Author                   = {Tie-Jun Shan and M. Wax and T. Kailath},
+  Journal                  = {IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  Year                     = {1985},
+  Month                    = {Aug},
+  Number                   = {4},
+  Pages                    = {806-811},
+  Volume                   = {33},
+  ISSN                     = {0096-3518},
+  Keywords                 = {Computational complexity;Direction of arrival estimation;Frequency;Information systems;Jamming;Sensor arrays;Signal analysis;Signal resolution;Smoothing methods;Yield estimation}
+}
+
+@Book{Sobel2000,
+  Title                    = {L{\"a}ngengrad - die illustrierte Ausgabe: die wahre Geschichte eines einsamen Genies, welches das gr{\"o}sste wissenschaftliche Problem seiner Zeit l{\"o}ste},
+  Author                   = {Sobel, D. and Andrewes, W.J.H. and Fienbork, M.},
+  Publisher                = {Berlin-Verlag},
+  Year                     = {2000}
+}
+
+@Article{mehrwegeausbreitung,
+  Title                    = {Mehrwegeausbreitung bei GNSS-gest{\"u}tzter Positionsbestimmung},
+  Author                   = {Wildt, Steffen},
+  Year                     = {2003}
+}
+
+@Electronic{dfg,
+  Month                    = {21. März},
+  Organization             = {Deutscbe Forschungsgemeinschaft},
+  Url                      = {http://www.dfg.de/dfg_magazin/aus_der_wissenschaft/archiv/mobilitaet_jb2012/bats/index.html},
+  Year                     = {2016}
+}
+

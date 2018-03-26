@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="rppr_robot">
+<!-- robot description -->
+
+  <link name="world"/>
+
+  <joint name="base_link_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <!-- Set the "origiprocess[robot_state_publisher-2]: started with pid [9163]process[robot_state_publisher-2]: started with pid [9163]process[robot_state_publisher-2]: started with pid [9163]n" propertie with the proper values-->
+    <origin rpy="0.0 0.0 0.0" xyz="0.3 0.34 0.583 "/>
+  </joint>
+
+  <link name="base_link">
+    <visual>
+     <!-- Set the "geometry" using the Base.stl file-->
+      <geometry>
+        <mesh filename="package://rppr_robot_description/meshes/Base.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="1.57079632679 0.0 3.1416"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q1_joint" type="revolute">
+  <axis xyz="0 0 -1"/>
+    <!-- Set the "limit" propertie with reasonable values-->
+    <limit effort="30" velocity="1.0" lower="-1.57079632679" upper="1.57079632679"/>
+    <parent link="base_link"/>
+    <child link="q1_link"/>
+    <!-- Set the "origin" propertie with the proper values-->
+    <origin rpy="1.57079632679 0.0 0.0" xyz="0.0 0.1 0.0 "/>
+  </joint>
+
+  <link name="q1_link">
+    <visual>
+      <!-- Set the "geometry" using the q1.stl file-->
+      <geometry>
+        <mesh filename="package://rppr_robot_description/meshes/q1.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q2_joint" type="prismatic">
+  <axis xyz="0 0 1"/>
+    <!-- Set the "limit" propertie with reasonable values-->
+    <limit effort="30" velocity="1.0" lower="0.02" upper="0.1"/>
+    <parent link="q1_link"/>
+    <child link="q2_link"/>
+    <!-- Set the "origin" propertie with the proper values-->
+    <origin rpy="0.0 1.57079632679 0.0" xyz="0.08 0.0 0.0 "/>
+  </joint>
+
+  <link name="q2_link">
+    <visual>
+      <!-- Set the "geometry" using the q2.stl file-->
+      <geometry>
+        <mesh filename="package://rppr_robot_description/meshes/q2.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 -1.57079632679"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q3_joint" type="prismatic">
+  <axis xyz="0 0 1"/>
+    <!-- Set the "limit" propertie with reasonable values-->
+    <limit effort="30" velocity="1.0" lower="0.02" upper="0.1"/>
+    <parent link="q2_link"/>
+    <child link="q3_link"/>
+    <!-- Set the "origin" propertie with the proper values-->
+     <origin rpy="1.57079632679 0.0 0.0" xyz="0.0 -0.082 0.115 "/>
+  </joint>
+
+  <link name="q3_link">
+    <visual>
+<!-- Set the "geometry" using the q3.stl file-->
+      <geometry>
+        <mesh filename="package://rppr_robot_description/meshes/q3.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.1025 0.0" rpy="0 0 0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q4_joint" type="revolute">
+  <axis xyz="0 0 1"/>
+    <!-- Set the "limit" propertie with reasonable values-->
+    <limit effort="30" velocity="1.0" lower="-1.57079632679" upper="1.57079632679"/>
+    <parent link="q3_link"/>
+    <child link="q4_link"/>
+    <!-- Set the "origin" propertie with the proper values-->
+    <origin rpy="-2.35619449019 0.0 3.14159265359" xyz="0.10652112466 0.01414213562 0.1895 "/>
+  </joint>
+
+  <link name="q4_link">
+    <visual>
+<!-- Set the "geometry" using the q4.stl file-->
+      <geometry>
+        <mesh filename="package://rppr_robot_description/meshes/q4.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+</robot>

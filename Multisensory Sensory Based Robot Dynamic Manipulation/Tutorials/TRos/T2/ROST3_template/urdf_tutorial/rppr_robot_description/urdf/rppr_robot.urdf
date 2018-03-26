@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="rppr_robot">
+<!-- robot description -->
+
+  <link name="world"/>
+
+  <joint name="base_link_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    
+    <!-- TODO:  Set the "origin" propertie with the proper values-->
+
+  </joint>
+
+  <link name="base_link">
+    <visual>
+     <!-- TODO:  Set the "geometry" using the Base.stl file-->
+      <origin xyz="0.0 0.0 0.0" rpy="1.57079632679 0.0 3.1416"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q1_joint" type="revolute">
+  <axis xyz="0 0 -1"/>
+    <!-- TODO:  Set the "limit" propertie with reasonable values-->
+    <parent link="base_link"/>
+    <child link="q1_link"/>
+    <!-- TODO:  Set the "origin" propertie with the proper values-->
+  </joint>
+
+  <link name="q1_link">
+    <visual>
+      <!-- TODO:  Set the "geometry" using the q1.stl file-->
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q2_joint" type="prismatic">
+  <axis xyz="0 0 1"/>
+    <!-- TODO:  Set the "limit" propertie with reasonable values-->
+    <parent link="q1_link"/>
+    <child link="q2_link"/>
+    <!-- TODO:  Set the "origin" propertie with the proper values-->
+  </joint>
+
+  <link name="q2_link">
+    <visual>
+      <!-- TODO:  Set the "geometry" using the q2.stl file-->
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q3_joint" type="prismatic">
+  <axis xyz="0 0 1"/>
+    <!-- TODO:  Set the "limit" propertie with reasonable values-->
+    <parent link="q2_link"/>
+    <child link="q3_link"/>
+    <!-- TODO:  Set the "origin" propertie with the proper values-->
+  </joint>
+
+  <link name="q3_link">
+    <visual>
+<!-- TODO:  Set the "geometry" using the q3.stl file-->
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="q4_joint" type="revolute">
+  <axis xyz="0 0 1"/>
+    <!-- TODO:  Set the "limit" propertie with reasonable values-->
+    <parent link="q3_link"/>
+    <child link="q4_link"/>
+    <!-- TODO:  Set the "origin" propertie with the proper values-->
+  </joint>
+
+  <link name="q4_link">
+    <visual>
+<!-- TODO:  Set the "geometry" using the q4.stl file-->
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <material name="grey">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+</robot>

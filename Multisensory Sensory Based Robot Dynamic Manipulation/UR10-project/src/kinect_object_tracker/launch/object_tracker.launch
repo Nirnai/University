@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="kinect_object_tracker" type="kinect_object_tracker_node" name="kinect_object_tracker"/>
+    <node pkg="image_view" type="image_view" name="image_view1" args="image:=/objectTracker/hsv_img"/>
+    <!--node pkg="image_view" type="image_view" name="image_view2" args="image:=/objectTracker/color_img"/-->
+    <node pkg="image_view" type="image_view" name="image_view3" args="image:=/objectTracker/circle_img"/>
+</launch>

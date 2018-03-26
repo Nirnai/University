@@ -1,0 +1,44 @@
+% This file was created with JabRef 2.11.
+% Encoding: Cp1252
+
+
+@InProceedings{Multipath,
+  Title                    = {A comprehensive method for multipath performance analysis of GNSS navigation signals},
+  Author                   = {Z. He and Y. Hu and J. Wu and J. Wang and J. Hou and K. Wang},
+  Booktitle                = {Signal Processing, Communications and Computing (ICSPCC), 2011 IEEE International Conference on},
+  Year                     = {2011},
+  Month                    = {Sept},
+  Pages                    = {1-6},
+  Doi                      = {10.1109/ICSPCC.2011.6061564},
+  Keywords                 = {error statistics;multipath channels;satellite navigation;GNSS navigation signals;comprehensive method;global navigation satellite system;multipath error envelope;multipath performance analysis;navigation signal design;user equivalent range error;Channel models;Computational modeling;Delay;Global Navigation Satellite Systems;Receivers;Reflection;Taylor expansion;correlator spacing;explicit expression method;signal to multipath ratio;statistical channel models;weighted running average multipath error envelope}
+}
+
+@InProceedings{nowak2014system,
+  Title                    = {System and signal design for an energy-efficient multi-frequency localization system},
+  Author                   = {Nowak, Thorsten and Hierold, Martin and Koelpin, Alexander and Hartmann, Markus and Troger, Hans-Martin and Thielecke, Jorn},
+  Booktitle                = {Wireless Sensors and Sensor Networks (WiSNet), 2014 IEEE Topical Conference on},
+  Year                     = {2014},
+  Organization             = {IEEE},
+  Pages                    = {55--57}
+}
+
+@Book{Sobel2000,
+  Title                    = {L{\"a}ngengrad - die illustrierte Ausgabe: die wahre Geschichte eines einsamen Genies, welches das gr{\"o}sste wissenschaftliche Problem seiner Zeit l{\"o}ste},
+  Author                   = {Sobel, D. and Andrewes, W.J.H. and Fienbork, M.},
+  Publisher                = {Berlin-Verlag},
+  Year                     = {2000}
+}
+
+@Article{mehrwegeausbreitung,
+  Title                    = {Mehrwegeausbreitung bei GNSS-gest{\"u}tzter Positionsbestimmung},
+  Author                   = {Wildt, Steffen},
+  Year                     = {2003}
+}
+
+@Electronic{dfg,
+  Month                    = {21. März},
+  Organization             = {Deutscbe Forschungsgemeinschaft},
+  Url                      = {http://www.dfg.de/dfg_magazin/aus_der_wissenschaft/archiv/mobilitaet_jb2012/bats/index.html},
+  Year                     = {2016}
+}
+

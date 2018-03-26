@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="gui" default="false" />
+  <arg name="list" default="[msd3dof_joint_states]"/>
+  
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find msd3dof_description)/urdf/msd3dof.urdf.xacro'" />
+  
+
+  <!-- loading the Home position for the robot -->
+  <rosparam command="load" file="$(find msd3dof_bringup)/launch/configs/robot/robot_zeros.yaml"/>
+
+  
+  <!-- Launching the joint state publisher, two options for the joint position generation gui or external source-->
+  <node name="joint_state_publisher_msd3dof" pkg="joint_state_publisher" type="joint_state_publisher">
+		<param name="use_gui" value="$(arg gui)"/>
+		<rosparam unless="$(arg gui)" param="source_list" subst_value="True">$(arg list)</rosparam>
+  </node>
+	
+  <!-- Robot state publisher and visualization -->	
+  <node name="robot_state_publisher_msd3dof" pkg="robot_state_publisher" type="state_publisher" />	
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find msd3dof_bringup)/launch/configs/rviz_config/msd3dof.rviz" required="true" />
+
+  <!-- OPTIONAL -->
+  <node name="spring_node" pkg="msd3dof_description" type="spring_node" output="screen" />	
+  
+</launch>

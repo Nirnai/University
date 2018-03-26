@@ -1,0 +1,125 @@
+%% Dokumentenklasse (Koma Script) -----------------------------------------
+\documentclass[%
+   final,      % fertiges Dokument
+   12pt,
+   headings=big,      % große Überschriften
+   ngerman,           % wird an andere Pakete weitergereicht
+   a4paper,
+   BCOR5mm,          % Zusaetzlicher Rand auf der Innenseite
+   DIV12,            % Seitengroesse (siehe Koma Skript Dokumentation !)
+   1.1headlines,     % Zeilenanzahl der Kopfzeilen
+   pagesize,         % Schreibt die Papiergroesse in die Datei.
+   oneside,
+   openright,        % Kapitel beginnen immer auf der rechten Seite
+   titlepage,        % Titel als einzelne Seite ('titlepage' Umgebung) 
+   parskip=false,        % Eingerückt (Standard)
+   headsepline,      % Linie unter Kolumnentitel
+   chapterprefix=false,  % keine Ausgabe von 'Kapitel:'      
+ 	toc=bibliography, % Literaturverzeichnis ins Inhaltsverzeichnis
+ 	toc=graduated,		% eingereuckte Gliederung des Inhaltsverzeichnisses
+	toc=listof,			% Tabellen- und Abbildungsverzeichnis ins Inhaltsverzeichnis
+   numbers=noenddot, % Überschriftnummerierung ohne Punkt, siehe DUDEN !
+   	footinclude=false,
+]{scrbook}
+% -------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+
+%%% Preambel
+\input{preambel/preambel}
+
+%%% Neue Befehle
+\input{macros/newcommands}
+\input{macros/TableCommands}
+
+%%% Silbentrennung
+\input{preambel/Hyphenation}
+
+%%% Abkürzungen, Glossar und Symbolverzeichnis
+\input{content/AbkGloSymb}
+
+%%% Alles serifenlos! (außer mathe)
+\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{helvet}
+\usepackage[osf]{mathpazo}
+%\usepackage{hvmaths}
+
+%Acronymfonts umdefinieren (nur für Paket 'Acronym' interessant)
+%Ausgeschriebenes Kursiv, Abkuerzung und Klammern normal
+%\renewcommand*{\acffont}[1]{\textit{#1}}
+%\renewcommand*{\acfsfont}[1]{\textnormal{#1}}
+
+%Abkürzungen werden kursiv gestellt (Paket 'glossaries')
+\renewcommand*{\glstextformat}[1]{\textit{#1}} 
+
+%Hurenkinder und Schusterjungen verhindern
+\clubpenalty = 10000
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+%Trennen von Inline Formeln unterbinden
+\relpenalty=9999
+\binoppenalty=9999
+
+
+%% Dokument Beginn %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Deckblatt
+\pagenumbering{gobble}
+\input{content/01-Titel}
+\input{content/02-Bestaetigung}
+\input{content/03-Aufgabenstellung}
+%\includepdf[lastpage=1]{thema_py.pdf} %Aufgabenstellung, geht nur in PDFLatex
+\input{content/04-VorwortAbstract}
+\frontmatter
+
+%Glossar und Abkürzungsverzeichnis sollen wie Kapitel angesehen werden
+\setglossarysection{chapter}
+
+%Abkürzungsverzeichnis ausgeben
+\deftranslation[to=German]{Acronyms}{Abkürzungsverzeichnis}
+\printglossary[type=\acronymtype,style=long,title=Abkürzungsverzeichnis]
+
+%Symbole ausgeben
+\printglossary[type=symbolslist,style=long]
+
+\clearpage %%% ggf. \cleardoublepage
+\phantomsection
+\pdfbookmark[0]{Inhaltsverzeichnis}{toc}
+\tableofcontents
+
+% Hauptteil
+\mainmatter
+\pagenumbering{gobble}
+
+\clearpage
+\pagenumbering{arabic}
+\input{content/1-Einleitung}
+\input{content/2-Grundlagen}
+\input{content/3-Schätzverfahren}
+\input{content/4-Signalerzeugung}
+\input{content/5-Auswertung}
+\input{content/6-Schluss}
+
+\printglossary[style=altlist,title=Glossar]
+
+% Anhang (Bibliographie darf im deutschen nicht in den Anhang!)
+\nocite{*}
+\bibliography{bib/BibtexDatabase}
+\clearpage
+%\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+\clearpage
+%\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoftables
+
+% Anhang
+\appendix
+\input{content/Z-Anhang}
+
+
+%% Dokument ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+

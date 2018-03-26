@@ -1,0 +1,12 @@
+<launch>
+    <node pkg="kinect_object_tracker" type="kinect_object_tracker_node" name="kinect_object_tracker"/>
+
+    <!--node pkg="image_view" type="image_view" name="image_view1" args="image:=/objectTracker/hsv_img"/-->
+    <node pkg="image_view" type="image_view" name="image_view3" args="image:=/objectTracker/circle_img"/>
+
+    <node pkg="msb_project" type="tf_imu_pub" name="tf_broadcaster" />
+    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find msb_project)/launch/configs/imu.rviz"/-->
+    <node pkg="msb_project" type="imu_acc_pub" name="acc_publisher" />
+    <node pkg="msb_project" type="pos_pub" name="pos_pub"/>
+    <node pkg="msb_project" type="kalman_pub" name="kalman_pub"/>
+</launch>

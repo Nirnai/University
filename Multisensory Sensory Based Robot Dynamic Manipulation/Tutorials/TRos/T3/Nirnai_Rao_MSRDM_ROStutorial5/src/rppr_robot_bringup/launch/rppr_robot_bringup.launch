@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="gui" default="false" />
+	<!-- -->
+	<arg name="list" default='[fourdof_joint_states]'/>
+	<!-- -->
+	<param name="robot_description" command="cat $(find rppr_robot_description)/urdf/rppr_robot.urdf" />
+
+	<param name="use_gui" value="$(arg gui)"/>
+	<!-- -->
+    <node name="joint_state_publisher_4dof" pkg="joint_state_publisher" type="joint_state_publisher">
+                  <param name="use_gui" value="$(arg gui)"/>
+                  <rosparam unless="$(arg gui)" param="source_list" subst_value="True">$(arg list)</rosparam>
+    </node>
+ 	<!-- -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rppr_robot_bringup)/rviz/rppr_robot.rviz" required="true" />
+
+</launch>

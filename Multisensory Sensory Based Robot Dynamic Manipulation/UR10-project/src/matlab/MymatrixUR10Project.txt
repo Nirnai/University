@@ -1,0 +1,210 @@
+T0_W=[1,0,0,0;
+0,1,0,0;
+0,0,1,0;
+0,0,0,1];
+%%%%%%%%%%%%%%%%%%%%%%
+
+Hi_iminus1(:,:,1)=[cos(q1),0,sin(q1),0;
+sin(q1),0,-cos(q1),0;
+0,1,0,L1;
+0,0,0,1];
+
+Hi_iminus1(:,:,2)=[-sin(q2),-cos(q2),0,-L3*sin(q2);
+cos(q2),-sin(q2),0,L3*cos(q2);
+0,0,1,0;
+0,0,0,1];
+
+Hi_iminus1(:,:,3)=[cos(q3),-sin(q3),0,L5*cos(q3);
+sin(q3),cos(q3),0,L5*sin(q3);
+0,0,1,0;
+0,0,0,1];
+
+Hi_iminus1(:,:,4)=[sin(q4),0,cos(q4),0;
+-cos(q4),0,sin(q4),0;
+0,-1,0,L2;
+0,0,0,1];
+
+Hi_iminus1(:,:,5)=[cos(q5),0,sin(q5),0;
+sin(q5),0,-cos(q5),0;
+0,1,0,L11;
+0,0,0,1];
+
+Hi_iminus1(:,:,6)=[cos(q6),-sin(q6),0,0;
+sin(q6),cos(q6),0,0;
+0,0,1,L4 + L12;
+0,0,0,1];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+Hi_0(:,:,1)=[cos(q1),0,sin(q1),0;
+sin(q1),0,-cos(q1),0;
+0,1,0,L1;
+0,0,0,1];
+
+Hi_0(:,:,2)=[-cos(q1)*sin(q2),-cos(q1)*cos(q2),sin(q1),-L3*cos(q1)*sin(q2);
+-sin(q1)*sin(q2),-cos(q2)*sin(q1),-cos(q1),-L3*sin(q1)*sin(q2);
+cos(q2),-sin(q2),0,L1 + L3*cos(q2);
+0,0,0,1];
+
+Hi_0(:,:,3)=[-sin(q2 + q3)*cos(q1),-cos(q2 + q3)*cos(q1),sin(q1),-cos(q1)*(L5*sin(q2 + q3) + L3*sin(q2));
+-sin(q2 + q3)*sin(q1),-cos(q2 + q3)*sin(q1),-cos(q1),-sin(q1)*(L5*sin(q2 + q3) + L3*sin(q2));
+cos(q2 + q3),-sin(q2 + q3),0,L1 + L5*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hi_0(:,:,4)=[cos(q2 + q3 + q4)*cos(q1),-sin(q1),-sin(q2 + q3 + q4)*cos(q1),L2*sin(q1) - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2);
+cos(q2 + q3 + q4)*sin(q1),cos(q1),-sin(q2 + q3 + q4)*sin(q1),- L2*cos(q1) - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2);
+sin(q2 + q3 + q4),0,cos(q2 + q3 + q4),L1 + L5*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hi_0(:,:,5)=[cos(q2 + q3 + q4)*cos(q1)*cos(q5) - sin(q1)*sin(q5),-sin(q2 + q3 + q4)*cos(q1),cos(q5)*sin(q1) + cos(q2 + q3 + q4)*cos(q1)*sin(q5),L2*sin(q1) - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2) - L11*sin(q2 + q3 + q4)*cos(q1);
+cos(q1)*sin(q5) + cos(q2 + q3 + q4)*cos(q5)*sin(q1),-sin(q2 + q3 + q4)*sin(q1),cos(q2 + q3 + q4)*sin(q1)*sin(q5) - cos(q1)*cos(q5),- L2*cos(q1) - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2) - L11*sin(q2 + q3 + q4)*sin(q1);
+sin(q2 + q3 + q4)*cos(q5),cos(q2 + q3 + q4),sin(q2 + q3 + q4)*sin(q5),L1 + L5*cos(q2 + q3) + L3*cos(q2) + L11*cos(q2 + q3 + q4);
+0,0,0,1];
+
+Hi_0(:,:,6)=[- cos(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))) - cos(q6)*sin(q1)*sin(q5),sin(q1)*sin(q5)*sin(q6) - cos(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))),cos(q5)*sin(q1) + cos(q2 + q3 + q4)*cos(q1)*sin(q5),sin(q1)*(L2 + L4*cos(q5) + L12*cos(q5)) - cos(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + sin(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + cos(q2)*(sin(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + L5*sin(q3) - cos(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + L3*sin(q2));
+cos(q1)*cos(q6)*sin(q5) - sin(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))),- sin(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))) - cos(q1)*sin(q5)*sin(q6),cos(q2 + q3 + q4)*sin(q1)*sin(q5) - cos(q1)*cos(q5),- sin(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + sin(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + cos(q2)*(sin(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + L5*sin(q3) - cos(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + L3*sin(q2)) - cos(q1)*(L2 + L4*cos(q5) + L12*cos(q5));
+cos(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) - sin(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4))),cos(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6))) - sin(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))),sin(q2 + q3 + q4)*sin(q5),L1 + cos(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + sin(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) - sin(q2)*(sin(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + L5*sin(q3) - cos(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + L3*cos(q2);
+0,0,0,1];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+Hi_w(:,:,1)=[cos(q1),0,sin(q1),0;
+sin(q1),0,-cos(q1),0;
+0,1,0,L1;
+0,0,0,1];
+
+Hi_w(:,:,2)=[-cos(q1)*sin(q2),-cos(q1)*cos(q2),sin(q1),-L3*cos(q1)*sin(q2);
+-sin(q1)*sin(q2),-cos(q2)*sin(q1),-cos(q1),-L3*sin(q1)*sin(q2);
+cos(q2),-sin(q2),0,L1 + L3*cos(q2);
+0,0,0,1];
+
+Hi_w(:,:,3)=[-sin(q2 + q3)*cos(q1),-cos(q2 + q3)*cos(q1),sin(q1),-cos(q1)*(L5*sin(q2 + q3) + L3*sin(q2));
+-sin(q2 + q3)*sin(q1),-cos(q2 + q3)*sin(q1),-cos(q1),-sin(q1)*(L5*sin(q2 + q3) + L3*sin(q2));
+cos(q2 + q3),-sin(q2 + q3),0,L1 + L5*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hi_w(:,:,4)=[cos(q2 + q3 + q4)*cos(q1),-sin(q1),-sin(q2 + q3 + q4)*cos(q1),L2*sin(q1) - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2);
+cos(q2 + q3 + q4)*sin(q1),cos(q1),-sin(q2 + q3 + q4)*sin(q1),- L2*cos(q1) - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2);
+sin(q2 + q3 + q4),0,cos(q2 + q3 + q4),L1 + L5*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hi_w(:,:,5)=[cos(q2 + q3 + q4)*cos(q1)*cos(q5) - sin(q1)*sin(q5),-sin(q2 + q3 + q4)*cos(q1),cos(q5)*sin(q1) + cos(q2 + q3 + q4)*cos(q1)*sin(q5),L2*sin(q1) - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2) - L11*sin(q2 + q3 + q4)*cos(q1);
+cos(q1)*sin(q5) + cos(q2 + q3 + q4)*cos(q5)*sin(q1),-sin(q2 + q3 + q4)*sin(q1),cos(q2 + q3 + q4)*sin(q1)*sin(q5) - cos(q1)*cos(q5),- L2*cos(q1) - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2) - L11*sin(q2 + q3 + q4)*sin(q1);
+sin(q2 + q3 + q4)*cos(q5),cos(q2 + q3 + q4),sin(q2 + q3 + q4)*sin(q5),L1 + L5*cos(q2 + q3) + L3*cos(q2) + L11*cos(q2 + q3 + q4);
+0,0,0,1];
+
+Hi_w(:,:,6)=[- cos(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))) - cos(q6)*sin(q1)*sin(q5),sin(q1)*sin(q5)*sin(q6) - cos(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))),cos(q5)*sin(q1) + cos(q2 + q3 + q4)*cos(q1)*sin(q5),sin(q1)*(L2 + L4*cos(q5) + L12*cos(q5)) - cos(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + sin(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + cos(q2)*(sin(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + L5*sin(q3) - cos(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + L3*sin(q2));
+cos(q1)*cos(q6)*sin(q5) - sin(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))),- sin(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))) - cos(q1)*sin(q5)*sin(q6),cos(q2 + q3 + q4)*sin(q1)*sin(q5) - cos(q1)*cos(q5),- sin(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + sin(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + cos(q2)*(sin(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + L5*sin(q3) - cos(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + L3*sin(q2)) - cos(q1)*(L2 + L4*cos(q5) + L12*cos(q5));
+cos(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) - sin(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4))),cos(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6))) - sin(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))),sin(q2 + q3 + q4)*sin(q5),L1 + cos(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + sin(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) - sin(q2)*(sin(q3)*(L11*cos(q4) + L4*sin(q4)*sin(q5) + L12*sin(q4)*sin(q5)) + L5*sin(q3) - cos(q3)*(L4*cos(q4)*sin(q5) - L11*sin(q4) + L12*cos(q4)*sin(q5))) + L3*cos(q2);
+0,0,0,1];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+Hcmi_iminus1(:,:,1)=[cos(q1),-sin(q1),0,0;
+sin(q1),cos(q1),0,0;
+0,0,1,L6;
+0,0,0,1];
+
+Hcmi_iminus1(:,:,2)=[-sin(q2),-cos(q2),0,-L8*sin(q2);
+cos(q2),-sin(q2),0,L8*cos(q2);
+0,0,1,L7;
+0,0,0,1];
+
+Hcmi_iminus1(:,:,3)=[cos(q3),-sin(q3),0,L10*cos(q3);
+sin(q3),cos(q3),0,L10*sin(q3);
+0,0,1,L9;
+0,0,0,1];
+
+Hcmi_iminus1(:,:,4)=[cos(q4),-sin(q4),0,0;
+sin(q4),cos(q4),0,0;
+0,0,1,L2/2;
+0,0,0,1];
+
+Hcmi_iminus1(:,:,5)=[cos(q5),-sin(q5),0,0;
+sin(q5),cos(q5),0,0;
+0,0,1,L11/2;
+0,0,0,1];
+
+Hcmi_iminus1(:,:,6)=[cos(q6),-sin(q6),0,0;
+sin(q6),cos(q6),0,0;
+0,0,1,L4/2 + L12/2;
+0,0,0,1];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+Hcmi_0(:,:,1)=[cos(q1),-sin(q1),0,0;
+sin(q1),cos(q1),0,0;
+0,0,1,L6;
+0,0,0,1];
+
+Hcmi_0(:,:,2)=[-cos(q1)*sin(q2),-cos(q1)*cos(q2),sin(q1),L7*sin(q1) - L8*cos(q1)*sin(q2);
+-sin(q1)*sin(q2),-cos(q2)*sin(q1),-cos(q1),- L7*cos(q1) - L8*sin(q1)*sin(q2);
+cos(q2),-sin(q2),0,L1 + L8*cos(q2);
+0,0,0,1];
+
+Hcmi_0(:,:,3)=[-sin(q2 + q3)*cos(q1),-cos(q2 + q3)*cos(q1),sin(q1),L9*sin(q1) - L10*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2);
+-sin(q2 + q3)*sin(q1),-cos(q2 + q3)*sin(q1),-cos(q1),- L9*cos(q1) - L10*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2);
+cos(q2 + q3),-sin(q2 + q3),0,L1 + L10*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hcmi_0(:,:,4)=[-sin(q2 + q3 + q4)*cos(q1),-cos(q2 + q3 + q4)*cos(q1),sin(q1),(L2*sin(q1))/2 - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2);
+-sin(q2 + q3 + q4)*sin(q1),-cos(q2 + q3 + q4)*sin(q1),-cos(q1),- (L2*cos(q1))/2 - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2);
+cos(q2 + q3 + q4),-sin(q2 + q3 + q4),0,L1 + L5*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hcmi_0(:,:,5)=[cos(q2 + q3 + q4)*cos(q1)*cos(q5) - sin(q1)*sin(q5),- cos(q5)*sin(q1) - cos(q2 + q3 + q4)*cos(q1)*sin(q5),-sin(q2 + q3 + q4)*cos(q1),L2*sin(q1) - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2) - (L11*sin(q2 + q3 + q4)*cos(q1))/2;
+cos(q1)*sin(q5) + cos(q2 + q3 + q4)*cos(q5)*sin(q1),cos(q1)*cos(q5) - cos(q2 + q3 + q4)*sin(q1)*sin(q5),-sin(q2 + q3 + q4)*sin(q1),- L2*cos(q1) - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2) - (L11*sin(q2 + q3 + q4)*sin(q1))/2;
+sin(q2 + q3 + q4)*cos(q5),-sin(q2 + q3 + q4)*sin(q5),cos(q2 + q3 + q4),L1 + L5*cos(q2 + q3) + L3*cos(q2) + (L11*cos(q2 + q3 + q4))/2;
+0,0,0,1];
+
+Hcmi_0(:,:,6)=[- cos(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))) - cos(q6)*sin(q1)*sin(q5),sin(q1)*sin(q5)*sin(q6) - cos(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))),cos(q5)*sin(q1) + cos(q2 + q3 + q4)*cos(q1)*sin(q5),sin(q1)*(L2 + (L4*cos(q5))/2 + (L12*cos(q5))/2) - cos(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + sin(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + cos(q2)*(sin(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + L5*sin(q3) - cos(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + L3*sin(q2));
+cos(q1)*cos(q6)*sin(q5) - sin(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))),- sin(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))) - cos(q1)*sin(q5)*sin(q6),cos(q2 + q3 + q4)*sin(q1)*sin(q5) - cos(q1)*cos(q5),- sin(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + sin(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + cos(q2)*(sin(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + L5*sin(q3) - cos(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + L3*sin(q2)) - cos(q1)*(L2 + (L4*cos(q5))/2 + (L12*cos(q5))/2);
+cos(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) - sin(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4))),cos(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6))) - sin(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))),sin(q2 + q3 + q4)*sin(q5),L1 + cos(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + sin(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) - sin(q2)*(sin(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + L5*sin(q3) - cos(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + L3*cos(q2);
+0,0,0,1];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+Hcmi_w(:,:,1)=[cos(q1),-sin(q1),0,0;
+sin(q1),cos(q1),0,0;
+0,0,1,L6;
+0,0,0,1];
+
+Hcmi_w(:,:,2)=[-cos(q1)*sin(q2),-cos(q1)*cos(q2),sin(q1),L7*sin(q1) - L8*cos(q1)*sin(q2);
+-sin(q1)*sin(q2),-cos(q2)*sin(q1),-cos(q1),- L7*cos(q1) - L8*sin(q1)*sin(q2);
+cos(q2),-sin(q2),0,L1 + L8*cos(q2);
+0,0,0,1];
+
+Hcmi_w(:,:,3)=[-sin(q2 + q3)*cos(q1),-cos(q2 + q3)*cos(q1),sin(q1),L9*sin(q1) - L10*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2);
+-sin(q2 + q3)*sin(q1),-cos(q2 + q3)*sin(q1),-cos(q1),- L9*cos(q1) - L10*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2);
+cos(q2 + q3),-sin(q2 + q3),0,L1 + L10*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hcmi_w(:,:,4)=[-sin(q2 + q3 + q4)*cos(q1),-cos(q2 + q3 + q4)*cos(q1),sin(q1),(L2*sin(q1))/2 - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2);
+-sin(q2 + q3 + q4)*sin(q1),-cos(q2 + q3 + q4)*sin(q1),-cos(q1),- (L2*cos(q1))/2 - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2);
+cos(q2 + q3 + q4),-sin(q2 + q3 + q4),0,L1 + L5*cos(q2 + q3) + L3*cos(q2);
+0,0,0,1];
+
+Hcmi_w(:,:,5)=[cos(q2 + q3 + q4)*cos(q1)*cos(q5) - sin(q1)*sin(q5),- cos(q5)*sin(q1) - cos(q2 + q3 + q4)*cos(q1)*sin(q5),-sin(q2 + q3 + q4)*cos(q1),L2*sin(q1) - L5*sin(q2 + q3)*cos(q1) - L3*cos(q1)*sin(q2) - (L11*sin(q2 + q3 + q4)*cos(q1))/2;
+cos(q1)*sin(q5) + cos(q2 + q3 + q4)*cos(q5)*sin(q1),cos(q1)*cos(q5) - cos(q2 + q3 + q4)*sin(q1)*sin(q5),-sin(q2 + q3 + q4)*sin(q1),- L2*cos(q1) - L5*sin(q2 + q3)*sin(q1) - L3*sin(q1)*sin(q2) - (L11*sin(q2 + q3 + q4)*sin(q1))/2;
+sin(q2 + q3 + q4)*cos(q5),-sin(q2 + q3 + q4)*sin(q5),cos(q2 + q3 + q4),L1 + L5*cos(q2 + q3) + L3*cos(q2) + (L11*cos(q2 + q3 + q4))/2;
+0,0,0,1];
+
+Hcmi_w(:,:,6)=[- cos(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))) - cos(q6)*sin(q1)*sin(q5),sin(q1)*sin(q5)*sin(q6) - cos(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))),cos(q5)*sin(q1) + cos(q2 + q3 + q4)*cos(q1)*sin(q5),sin(q1)*(L2 + (L4*cos(q5))/2 + (L12*cos(q5))/2) - cos(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + sin(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + cos(q2)*(sin(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + L5*sin(q3) - cos(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + L3*sin(q2));
+cos(q1)*cos(q6)*sin(q5) - sin(q1)*(sin(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) + cos(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4)))),- sin(q1)*(cos(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))) + sin(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)))) - cos(q1)*sin(q5)*sin(q6),cos(q2 + q3 + q4)*sin(q1)*sin(q5) - cos(q1)*cos(q5),- sin(q1)*(sin(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + sin(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + cos(q2)*(sin(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + L5*sin(q3) - cos(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + L3*sin(q2)) - cos(q1)*(L2 + (L4*cos(q5))/2 + (L12*cos(q5))/2);
+cos(q2)*(cos(q3)*cos(q4)*sin(q6) - sin(q3)*sin(q4)*sin(q6) + cos(q3)*cos(q5)*cos(q6)*sin(q4) + cos(q4)*cos(q5)*cos(q6)*sin(q3)) - sin(q2)*(cos(q3)*(sin(q4)*sin(q6) - cos(q4)*cos(q5)*cos(q6)) + sin(q3)*(cos(q4)*sin(q6) + cos(q5)*cos(q6)*sin(q4))),cos(q2)*(cos(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6)) - sin(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6))) - sin(q2)*(cos(q3)*(cos(q6)*sin(q4) + cos(q4)*cos(q5)*sin(q6)) + sin(q3)*(cos(q4)*cos(q6) - cos(q5)*sin(q4)*sin(q6))),sin(q2 + q3 + q4)*sin(q5),L1 + cos(q2)*(L5*cos(q3) + cos(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + sin(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) - sin(q2)*(sin(q3)*(L11*cos(q4) + (L4*sin(q4)*sin(q5))/2 + (L12*sin(q4)*sin(q5))/2) + L5*sin(q3) - cos(q3)*((L4*cos(q4)*sin(q5))/2 - L11*sin(q4) + (L12*cos(q4)*sin(q5))/2)) + L3*cos(q2);
+0,0,0,1];
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+

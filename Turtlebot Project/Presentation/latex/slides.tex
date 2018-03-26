@@ -1,0 +1,125 @@
+\begin{frame}{Control and Navigation}
+
+\begin{itemize}
+\item
+  Bestimmen der Pose aus Odometry
+
+  \begin{itemize}
+  \item
+    x und y direkt aus odom und theta aus quaternion
+  \item
+    Erweiterung mit gmapping tfs map and base\_footprint um drift freie
+    lokalisierung zu bekommen
+  \end{itemize}
+\item
+  Bekommt ein Ziel als x und y coordinate und bestimmt nötige rotation
+  selbständig
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Entscheidung in welche Richtung gedreht werden soll
+  \end{itemize}
+\item
+  P-Regler für die letzte Meter, um Genauigkeit zu erhöhen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Eventuell noch auf PID erweitern
+  \end{itemize}
+\item
+  Erkennt Objekte aus Lidar und stoppt wenn zu nahe
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Noch zu machen: avoidance path
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Object Detection}
+
+\begin{itemize}
+\item
+  Sucht kontinuierlich im LIDAR nach Objekten und published deren Posen.
+\item
+  Führt die Initialisierung durch:
+
+  \begin{itemize}
+  \item
+    Es wird nach 3er Objektreihen gesucht, die 2 Bedingungen erfüllen:
+
+    \begin{itemize}
+    \item
+      Das Verhältnis zwischen den 2 inneren Abstanden beträgt ca. 33\%
+    \item
+      Ale 3 Objekte liegen auf einer Geraden.
+    \end{itemize}
+  \item
+    Berechnung von a/b mittels Kosinussatz
+  \item
+    Berechnung von der eigenen Position im Spielfeld, Spielfeld und
+    gegnerischem Tor
+  \end{itemize}
+\item
+  Initiale Messung wird etwa 10x durchgeführt
+\item
+  Je nach Abweichung der Ergebnisse werden sie akzeptiert oder nicht.
+\item
+  Wenn nicht, alterative Initialisierung durch Bewegung.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Image Processing}
+
+\begin{itemize}
+\item
+  Läuft auf dem Turtlebot
+\item
+  Sucht nach den blau/gelben Pucks und den grünen Pfosten
+
+  \begin{itemize}
+  \item
+    Thresholding der Farben im Bild in HSV
+  \item
+    Canny Kantendetektor über Threshold Img
+  \item
+    Konturen Suche mit findContours
+  \item
+    Berechnung der HuMoments für Konturen ab einer gewissen Größe
+  \item
+    Bestimmung des Objekts anhand Farbe und der 7 HuMoments
+  \item
+    Bestimmung des Mittelpunktes der Objekte im Bild
+  \item
+    Bestimmung der 3D Pose des Objekts aus der Punktwolke
+  \end{itemize}
+\item
+  Bestimmt Teamfarbe
+
+  \begin{itemize}
+  \item
+    Nach der Initialisierung fahren wir seitlich vor das Tor und nehmen
+    ein Bild auf.
+  \item
+    Im Bild wird nach einer gelben Kontur gesucht und deren Fläche wird
+    approximiert.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Angelina}
+
+\begin{itemize}
+\item
+  Umwandlung der testgui als in ausführbaren node
+\item
+  ergänzen eines topics zur Kommunikation mit dem turtlebot
+\end{itemize}
+
+\end{frame}

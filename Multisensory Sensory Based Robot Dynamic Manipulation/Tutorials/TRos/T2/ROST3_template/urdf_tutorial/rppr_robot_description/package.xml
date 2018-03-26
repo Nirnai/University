@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>rppr_robot_description</name>
+  <version>0.0.0</version>
+  <description>The robot description package</description>
+
+  <maintainer email="rogelio.guadarrama@tum.de">J. Rogelio Guadarrama Olvera</maintainer>
+  <license>TUM</license>
+
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

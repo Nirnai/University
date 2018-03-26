@@ -1,0 +1,788 @@
+%%% Frei nach einer Vorlage von Matthias Pospiech
+%%% Modifiziert von Frederik Beer
+
+
+
+\input{preambel/preambel-commands}
+%
+%%% Doc: www.cs.brown.edu/system/software/latex/doc/calc.pdf
+\usepackage{calc}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/xcolor/xcolor.pdf
+\usepackage[
+	table % Load for using rowcolors command in tables
+]{xcolor}
+
+
+%%% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf
+\usepackage{listings}
+
+%% Settings for the listing stuff
+\definecolor{hellgrau}{rgb}{0.9,0.9,0.9}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+
+\lstset{%
+   morekeywords={AND,ASC,avg,CHECK,COMMIT,count,DECODE,DESC,DISTINCT,%
+                 GROUP,IN,LIKE,NUMBER,ROLLBACK,SUBSTR,sum,VARCHAR2}%
+}
+\lstset{%
+    float=hbp,%
+    basicstyle=\ttfamily\small, %
+    %identifierstyle=\color{colIdentifier}, %
+    %keywordstyle=\color{colKeys}, %
+    %stringstyle=\color{colString}, %
+    %commentstyle=\color{colComments}, %
+    columns=flexible, %
+    tabsize=2, %
+    frame=single, %
+    extendedchars=true, %
+    showspaces=false, %
+    showstringspaces=false, %
+    numbers=left, %
+    numberstyle=\tiny, %
+    breaklines=true, %
+    backgroundcolor=\color{hellgrau}, %
+    breakautoindent=true, %
+    captionpos=b%
+}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/required/babel/babel.pdf
+\usepackage[
+%	german,
+	ngerman,
+%	english,
+%	frensh,
+]{babel}
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/required/graphics/grfguide.pdf
+% Will be loaded by pstools
+\usepackage[pdftex]{graphicx}
+
+%%% Doc: http://mirrors.ctan.org/macros/latex/contrib/pstool/pstool.pdf
+\usepackage{pstool}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/oberdiek/epstopdf.pdf
+%%% Macht nur Sinn bei der Verwendung von PDFLatex und EPS Grafiken, wandelt diese dann
+%%% automatisch in PDFs um.
+\usepackage{epstopdf}
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/required/amslatex/math/amsldoc.pdf
+\usepackage[
+   centertags, % (default) center tags vertically
+   %tbtags,    % 'Top-or-bottom tags': For a split equation, place equation numbers level
+               % with the last (resp. first) line, if numbers are on the right (resp. left).
+   sumlimits,  %(default) Place the subscripts and superscripts of summation
+               % symbols above and below
+   %nosumlimits, % Always place the subscripts and superscripts of summation-type
+               % symbols to the side, even in displayed equations.
+   intlimits,  % Like sumlimits, but for integral symbols.
+   %nointlimits, % (default) Opposite of intlimits.
+   namelimits, % (default) Like sumlimits, but for certain 'operator names' such as
+               % det, inf, lim, max, min, that traditionally have subscripts placed underneath
+               % when they occur in a displayed equation.
+   %nonamelimits, % Opposite of namelimits.
+   %leqno,     % Place equation numbers on the left.
+   %reqno,     % Place equation numbers on the right.
+   %fleqn,     % Position equations at a fixed indent from the left margin rather than
+               % centered in the text column.
+]{amsmath} %
+\usepackage{amssymb}
+\usepackage{trfsigns}
+%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/marginnote.pdf
+\usepackage{marginnote}
+
+%% Doc: (inside relsize.sty )
+%% ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/misc/relsize.sty
+\usepackage{relsize}
+
+%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/ms/ragged2e.pdf
+\usepackage{ragged2e}
+
+\usepackage[T1]{fontenc} % T1 Schrift Encoding
+\usepackage{textcomp}	 % Zusatzliche Symbole (Text Companion font extension)
+
+%%% Schriften werden in Fonts.tex geladen
+\input{preambel/Fonts}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/mh/doc/mathtools.pdf
+\usepackage[fixamsmath,disallowspaces]{mathtools}
+
+%%% Doc: http://www.ctan.org/info?id=fixmath
+\usepackage{fixmath}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/onlyamsmath/onlyamsmath.dvi
+\usepackage[
+	all,
+	warning
+]{onlyamsmath}
+
+%%% Doc: http://www.tex.ac.uk/ctan/macros/latex/contrib/koma-script/tocstyle.pdf
+%%% Kann verwendet werden, wenn im Inhaltsverzeichnis �berall oder nirgends Punkte gew�nscht sind.
+%\usepackage{tocstyle}
+%\usetocstyle{allwithdot}
+%\usetocstyle{noonewithdot}
+%\usetocstyle{KOMAlike}
+
+%------------------------------------------------------
+
+% -- Vektor fett darstellen -----------------
+% \let\oldvec\vec
+% \def\vec#1{{\boldsymbol{#1}}} %Fetter Vektor
+% \newcommand{\ve}{\vec} %
+% -------------------------------------------
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/was/icomma.dtx
+\usepackage{icomma}
+
+%%% Tauschen von Epsilon und andere:
+% \let\ORGvarrho=\varrho
+% \let\varrho=\rho
+% \let\rho=\ORGvarrho
+%
+\let\ORGvarepsilon=\varepsilon
+\let\varepsilon=\epsilon
+\let\epsilon=\ORGvarepsilon
+%
+% \let\ORGvartheta=\vartheta
+% \let\vartheta=\theta
+% \let\theta=\ORGvartheta
+%
+% \let\ORGvarphi=\varphi
+% \let\varphi=\phi
+% \let\phi=\ORGvarphi
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktabs.pdf
+\usepackage{booktabs}
+
+% Tabellen ueber mehere Seiten
+% ----------------------------
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/carlisle/ltxtable.pdf
+% \usepackage{ltxtable} % Longtable + tabularx
+                        % (multi-page tables) + (auto-sized columns in a fixed width table)
+% -> nach hyperref laden
+\LoadPackageLater{ltxtable}
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/soul/soul.pdf
+\usepackage{soul}		            % Unterstreichen, Sperren
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/misc/url.sty
+\usepackage{url} % Setzen von URLs. In Verbindung mit hyperref sind diese auch aktive Links.
+
+%%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmisc.pdf
+\usepackage[
+   bottom,      % Footnotes appear always on bottom. This is necessary
+                % especially when floats are used
+   stable,      % Make footnotes stable in section titles
+   perpage,     % Reset on each page
+   %para,       % Place footnotes side by side of in one paragraph.
+   %side,       % Place footnotes in the margin
+   ragged,      % Use RaggedRight
+   %norule,     % suppress rule above footnotes
+   multiple,    % rearrange multiple footnotes intelligent in the text.
+   %symbol,     % use symbols instead of numbers
+]{footmisc}
+
+%% Einruecken der Fussnote einstellen
+%\setlength\footnotemargin{10pt}
+
+%--- footnote counter documentweit durchlaufend ------------------------------
+%\usepackage{chngcntr}
+%\counterwithout{footnote}{chapter}
+%-----------------------------------------------------------------------------
+
+
+%%% Doc: Documentation inside dtx File
+\usepackage[ngerman]{varioref} % Intelligente Querverweise
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf
+% Better than 'paralist' and 'enumerate' because it uses a keyvalue interface !
+% Do not load together with enumerate.
+\IfPackageNotLoaded{enumerate}{
+	\usepackage{enumitem}
+}
+
+%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/csquotes/csquotes.pdf
+% Advanced features for clever quotations
+\usepackage[%
+   babel,            % the style of all quotation marks will be adapted
+                     % to the document language as chosen by 'babel'
+   german=quotes,		% Styles of quotes in each language
+   english=british,
+   french=guillemets
+]{csquotes}
+
+% All facilities which take a 'cite' argument will not insert
+% it directly. They pass it to an auxiliary command called \mkcitation
+% which  may be redefined to format the citation.
+\renewcommand*{\mkcitation}[1]{{\,}#1}
+\renewcommand*{\mkccitation}[1]{ #1}
+
+\SetBlockThreshold{2} % Anzahl von Zeilen
+
+\newenvironment{myquote}%
+	{\begin{quote}\small}%
+	{\end{quote}}%
+\SetBlockEnvironment{myquote}
+%\SetCiteCommand{} % Changes citation command
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/natbib/natbib.pdf
+\usepackage[%
+	%round,	%(default) for round parentheses;
+	square,	% for square brackets;
+	%curly,	% for curly braces;
+	%angle,	% for angle brackets;
+	%colon,	% (default) to separate multiple citations with colons;
+	comma,	% to use commas as separaters;
+	%authoryear,% (default) for author-year citations;
+	numbers,	% for numerical citations;
+	%super,	% for superscripted numerical citations, as in Nature;
+	sort,		% orders multiple citations into the sequence in which they appear in the list of references;
+	sort&compress,    % as sort but in addition multiple numerical citations
+                   % are compressed if possible (as 3-6, 15);
+	%longnamesfirst,  % makes the first citation of any reference the equivalent of
+                   % the starred variant (full author list) and subsequent citations
+                   %normal (abbreviated list);
+	%sectionbib,      % redefines \thebibliography to issue \section* instead of \chapter*;
+                   % valid only for classes with a \chapter command;
+                   % to be used with the chapterbib package;
+	%nonamebreak,     % keeps all the authors names in a citation on one line;
+                   %causes overfull hboxes but helps with some hyperref problems.
+]{natbib}
+
+%%% Bibliography styles according to DIN
+%%% get from: http://www.ctan.org/tex-archive/biblio/bibtex/contrib/german/din1505/
+%\bibliographystyle{alphadin}
+%\bibliographystyle{abbrvdin}
+\bibliographystyle{bib/bst/plaindin}
+%\bibliographystyle{unsrtdin}
+%\bibliographystyle{bib/bst/alphadin-mod} % Modifiziert: Kleinere Abstaende vor ";" und kein "+" bei etal.
+
+%%% Bibliography styles created with custombib
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/custom-bib/makebst.pdf
+%\bibliographystyle{bib/bst/AlphaDINFirstName}
+%\bibliographystyle{bib/bst/alphadin}
+
+
+% weitere BibTeX styles: http://www.cs.stir.ac.uk/~kjt/software/latex/showbst.html
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/microtype/microtype.pdf
+\ifpdf
+\usepackage[%
+	expansion=true, % better typography, but with much larger PDF file.
+	protrusion=true
+]{microtype}
+\fi
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf
+
+\usepackage[
+	  % Farben fuer die Links
+    colorlinks=false,         % Links erhalten Farben statt Kaeten
+    urlcolor=pdfurlcolor,    % \href{...}{...} external (URL)
+    filecolor=pdffilecolor,  % \href{...} local file
+    linkcolor=pdflinkcolor,  %\ref{...} and \pageref{...}
+    % Links
+    raiselinks=true,			 % calculate real height of the link
+    %breaklinks,              % Links berstehen Zeilenumbruch, geht nicht bei DVI->PS
+    backref=page,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
+    pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe
+    verbose,
+    hyperindex=true,         % backlinkex index
+    linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
+    hyperfootnotes=false,     % Keine Links auf Fussnoten
+    % Bookmarks
+    bookmarks=true,          % Erzeugung von Bookmarks fuer PDF-Viewer
+    bookmarksopenlevel=1,    % Gliederungstiefe der Bookmarks
+    bookmarksopen=true,      % Expandierte Untermenues in Bookmarks
+    bookmarksnumbered=false,  % Nummerierung der Bookmarks
+    %bookmarkstype=toc,       % Art der Verzeichnisses
+    % Anchors
+    plainpages=false,        % Anchors even on plain pages ?
+    pageanchor=true,         % Pages are linkable
+    % PDF Informationen
+    pdftitle={},             % Titel
+    pdfauthor={Autor},            % Autor
+    pdfcreator={LaTeX, hyperref, KOMA-Script}, % Ersteller
+    %pdfproducer={pdfeTeX 1.10b-2.1} %Produzent
+    pdfstartview=FitH,       % Dokument wird Fit Width geaefnet
+    pdfpagemode=UseOutlines, % Bookmarks im Viewer anzeigen
+    %pdfpagelabels=true,      % set PDF page labels
+		%dvipdfm,								 % Links auch wenn PDF �ber DVI Umweg erstellt wird
+		pdfborder={0 0 0},
+ ]{hyperref}
+
+
+\IfPackageLoaded{backref}{
+   % % Change Layout of Backref
+   \renewcommand*{\backref}[1]{%
+   	% default interface
+   	% #1: backref list
+   	%
+   	% We want to use the alternative interface,
+   	% therefore the definition is empty here.
+   }%
+   \renewcommand*{\backrefalt}[4]{%
+   	% alternative interface
+   	% #1: number of distinct back references
+   	% #2: backref list with distinct entries
+   	% #3: number of back references including duplicates
+   	% #4: backref list including duplicates
+   	\mbox{(Zitiert auf %
+   	\ifnum#1=1 %
+		   Seite~%
+	   \else
+   		Seiten~%
+   	\fi
+   	#2)}%
+   }
+}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
+% Links auf Gleitumgebungen springen nicht zur Beschriftung,
+% sondern zum Anfang der Gleitumgebung
+\IfPackageLoaded{hyperref}{%
+	\usepackage[figure]{hypcap}
+}
+
+% Auch Abbildung und nicht nur die Nummer wird zum Link (abgeleitet
+% aus Posting von Heiko Oberdiek (d09n5p$9md$1@news.BelWue.DE);
+% Verwendung: In \abbvref{label} ist ein Beispiel dargestellt
+\providecommand*{\abbvrefname}{Abbildung}
+\newcommand*{\abbvref}[1]{%
+  \hyperref[#1]{\abbvrefname}\vref{#1}%
+}
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/pdfpages/pdfpages.pdf
+\usepackage{pdfpages} % Include pages from external PDF documents in LaTeX documents
+
+% Pakete Laden die nach Hyperref geladen werden sollen
+\LoadPackagesNow % (ltxtable, tabularx)
+
+
+%%% Doc: only dtx Package
+\usepackage{float}             % Stellt die Option [H] fuer Floats zur Verfgung
+
+%%% Doc: No Documentation
+\usepackage{flafter}          % Floats immer erst nach der Referenz setzen
+
+% Defines a \FloatBarrier command, beyond which floats may not
+% pass; useful, for example, to ensure all floats for a section
+% appear before the next \section command.
+%\usepackage[
+%	section		% "\section" command will be redefined with "\FloatBarrier"
+%]{placeins}
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/subfig/subfig.pdf
+\usepackage{subfig} % Layout wird weiter unten festgelegt !
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
+\usepackage{wrapfig}	        % defines wrapfigure and wrapfloat
+%\setlength{\wrapoverhang}{\marginparwidth} % aeerlapp des Bildes ...
+%\addtolength{\wrapoverhang}{\marginparsep} % ... in den margin
+\setlength{\intextsep}{0.75\baselineskip} % Platz ober- und unterhalb des Bildes
+% \intextsep ignoiert bei draft ???
+%\setlength{\columnsep}{1em} % Abstand zum Text
+
+
+% Make float placement easier
+\renewcommand{\floatpagefraction}{.75} % vorher: .5
+\renewcommand{\textfraction}{.1}       % vorher: .2
+\renewcommand{\topfraction}{.8}        % vorher: .7
+\renewcommand{\bottomfraction}{.5}     % vorher: .3
+\setcounter{topnumber}{3}              % vorher: 2
+\setcounter{bottomnumber}{2}           % vorher: 1
+\setcounter{totalnumber}{5}            % vorher: 3
+
+%%% Doc: http://tug.ctan.org/tex-archive/macros/latex/contrib/auto-pst-pdf/auto-pst-pdf.pdf
+%\usepackage[
+%latex={-interaction=nonstopmode},
+%crop=off,runs=2
+%]{auto-pst-pdf} %use [off] to stop compilation
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/psfrag/pfgguide.pdf
+%\usepackage{psfrag}	% Ersetzen von Zeichen in eps Bildern
+
+%%% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf
+\usepackage[%
+%	outercaption,%	(default) caption is placed always on the outside side
+%	innercaption,% caption placed on the inner side
+%	leftcaption,%  caption placed on the left side
+	rightcaption,% caption placed on the right side
+%	wide,%			caption of float my extend into the margin if necessary
+%	margincaption,% caption set into margin
+	ragged,% caption is set ragged
+]{sidecap}
+
+\renewcommand\sidecaptionsep{2em}
+%\renewcommand\sidecaptionrelwidth{20}
+\sidecaptionvpos{table}{c}
+\sidecaptionvpos{figure}{c}
+
+%%% Seems to be needed for glossaries on newer miktex installations
+\usepackage{datatool}
+%%% Doc: http://mirror.informatik.uni-mannheim.de/pub/mirrors/tex-archive/macros/latex/contrib/glossaries/glossaries-manual.html
+\usepackage[ngerman]{translator}
+%Paket laden
+\usepackage[
+nonumberlist, %keine Seitenzahlen anzeigen
+acronym,      %ein Abk�rzungsverzeichnis erstellen
+toc,          %Eintr�ge im Inhaltsverzeichnis
+section]      %im Inhaltsverzeichnis auf section-Ebene erscheinen
+{glossaries}
+
+%Ein eigenes Symbolverzeichnis erstellen
+\newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}
+
+%Den Punkt am Ende jeder Beschreibung deaktivieren
+\renewcommand*{\glspostdescription}{}
+
+%Glossar-Befehle anschalten
+\makeglossaries
+
+
+%%% Doc: http://tug.ctan.org/tex-archive/macros/latex/contrib/siunitx/siunitx.pdf
+\usepackage[]{units}
+\usepackage{siunitx}
+
+%Normale im LaTeX-Dokument verwendete Schriftart nutzen
+\sisetup{detect-all}
+
+%%% Doc: http://ftp.gwdg.de/pub/ctan/macros/latex/contrib/ellipsis/ellipsis.pdf
+\usepackage{ellipsis}  % >>Intelligente<< \dots
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/setspace/setspace.sty
+\usepackage{setspace}
+%\doublespace	        % 2-facher Abstand
+\onehalfspace        % 1,5-facher Abstand
+
+
+
+% BCOR
+%    current  % Satzspiegelberechnung mit dem aktuell gültigen BCOR-Wert erneut
+%             % durchführen.
+% DIV
+%    calc     % Satzspiegelberechnung einschließlich Ermittlung eines guten
+%             % DIV-Wertes erneut durchführen.
+%    classic  % Satzspiegelberechnung nach dem
+%             % mittelalterlichen Buchseitenkanon
+%             % (Kreisberechnung) erneut durchführen.
+%    current  % Satzspiegelberechnung mit dem aktuell gültigen DIV-Wert erneut
+%             % durchführen.
+%    default  % Satzspiegelberechnung mit dem Standardwert für das aktuelle
+%             % Seitenformat und die aktuelle Schriftgröße erneut durchführen.
+%             % Falls kein Standardwert existiert calc anwenden.
+%    last     % Satzspiegelberechnung mit demselben DIV -Argument, das beim
+%             % letzten Aufruf angegeben wurde, erneut durchführen
+
+%\raggedbottom     % Variable Seitenhoehen zulassen
+
+% Farben ================================================================
+
+\IfDefined{definecolor}{%
+
+% Farbe der Ueberschriften
+%\definecolor{sectioncolor}{RGB}{0, 51, 153} % Blau
+%\definecolor{sectioncolor}{RGB}{0, 25, 152}    % Blau (dunkler))
+\definecolor{sectioncolor}{RGB}{0, 0, 0}    % Schwarz
+%
+% Farbe des Textes
+\definecolor{textcolor}{RGB}{0, 0, 0}        % Schwarz
+%
+% Farbe fuer grau hinterlegte Boxen (fuer Paket framed.sty)
+\definecolor{shadecolor}{gray}{0.90}
+
+% Farben fuer die Links im PDF
+\definecolor{pdfurlcolor}{rgb}{0.6,0,0}
+\definecolor{pdffilecolor}{rgb}{0,0.5,0}
+\definecolor{pdflinkcolor}{rgb}{0,0,0.75}
+
+% Farben fuer Listings
+\colorlet{stringcolor}{green!40!black!100}
+\colorlet{commencolor}{blue!0!black!100}
+
+} % Endif
+
+%% Aussehen der URLS======================================================
+
+%fuer URL (nur wenn url geladen ist)
+\IfDefined{urlstyle}{
+	\urlstyle{tt} %sf
+}
+
+%% Kopf und Fusszeilen====================================================
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.pdf
+\usepackage[%
+   automark,         % automatische Aktualisierung der Kolumnentitel
+   nouppercase,      % Grossbuchstaben verhindern
+   %markuppercase    % Grossbuchstaben erzwingen
+   %markusedcase     % vordefinierten Stil beibehalten
+   %komastyle,       % Stil von Koma Script
+   %standardstyle,   % Stil der Standardklassen
+]{scrpage2}
+
+\IfElseChapterDefined{%
+   \pagestyle{scrheadings} % Seite mit Headern
+}{
+   \pagestyle{scrplain} % Seiten ohne Header
+}
+%\pagestyle{empty} % Seiten ohne Header
+\clearscrheadings
+%\clearscrplain
+%
+% Was steht wo...
+\IfElseChapterDefined{
+   % Oben aussen: Kapitel und Section
+   % Unten aussen: Seitenzahl
+   % \ohead{\headmark} % Oben außen: Setzt Kapitel und Section automatisch
+   % \ofoot[\pagemark]{\pagemark}
+   % oder...
+   % Oben aussen: Seitenzahlen
+   % Oben innen: Kapitel und Section
+   \cfoot{\pagemark}
+   \ohead{\headmark}
+}{
+   \cfoot[\pagemark]{\pagemark} % Mitte unten: Seitenzahlen bei plain
+}
+% Vollstaendige Liste der moeglichen Positionierungen
+% \lehead[scrplain-links-gerade]{scrheadings-links-gerade}
+% \cehead[scrplain-mittig-gerade]{scrheadings-mittig-gerade}
+% \rehead[scrplain-rechts-gerade]{scrheadings-rechts-gerade}
+% \lefoot[scrplain-links-gerade]{scrheadings-links-gerade}
+% \cefoot[scrplain-mittig-gerade]{scrheadings-mittig-gerade}
+% \refoot[scrplain-rechts-gerade]{scrheadings-rechts-gerade}
+% \lohead[scrplain-links-ungerade]{scrheadings-links-ungerade}
+% \cohead[scrplain-mittig-ungerade]{scrheadings-mittig-ungerade}
+% \rohead[scrplain-rechts-ungerade]{scrheadings-rechts-ungerade}
+% \lofoot[scrplain-links-ungerade]{scrheadings-links-ungerade}
+% \cofoot[scrplain-mittig-ungerade]{scrheadings-mittig-ungerade}
+% \rofoot[scrplain-rechts-ungerade]{scrheadings-rechts-ungerade}
+% \ihead[scrplain-innen]{scrheadings-innen}
+% \chead[scrplain-zentriert]{scrheadings-zentriert}
+% \ohead[scrplain-außen]{scrheadings-außen}
+% \ifoot[scrplain-innen]{scrheadings-innen}
+% \cfoot[scrplain-zentriert]{scrheadings-zentriert}
+% \ofoot[scrplain-außen]{scrheadings-außen}
+
+
+%\usepackage{lastpage} % Stellt 'LastPage' zur Verfuegung
+%\cfoot[Seite \pagemark~von \pageref{LastPage}]{} % Seitenzahl von Anzahl Seiten
+
+% Angezeigte Abschnitte im Header
+\IfElseChapterDefined{
+   \automark[section]{chapter} %[rechts]{links}
+}{
+   \automark[subsection]{section} %[rechts]{links}
+}
+%
+% Linien (moegliche Kombination mit Breiten)
+\IfChapterDefined{
+   %\setheadtopline{}     % modifiziert die Parameter fuer die Linie ueber dem Seitenkopf
+   \setheadsepline{.4pt}[\color{black}]
+                         % modifiziert die Parameter fuer die Linie zwischen Kopf
+                         % und Textkörper
+   %\setfootsepline{}    % modifiziert die Parameter fuer die Linie zwischen Text
+                         % und Fuß
+   %\setfootbotline{}    % modifiziert die Parameter fuer die Linie unter dem Seitenfuss
+}
+
+% Groesse des Headers
+\setlength{\headheight}{1.1\baselineskip}
+% -> eingestellt �ber Option 'headlines'.
+
+% Breite von Kopf und Fusszeile einstellen
+% \setheadwidth[Verschiebung]{Breite}
+% \setfootwidth[Verschiebung]{Breite}
+% m�gliche Werte
+% paper - die Breite des Papiers
+% page - die Breite der Seite
+% text - die Breite des Textbereichs
+% textwithmarginpar - die Breite des Textbereichs inklusive dem Seitenrand
+% head - die aktuelle Breite des Seitenkopfes
+% foot - die aktuelle Breite des Seitenfusses
+\setheadwidth[0pt]{text}
+\setfootwidth[0pt]{text}
+
+
+%% Fussnoten =============================================================
+% Keine hochgestellten Ziffern in der Fussnote (KOMA-Script-spezifisch):
+\deffootnote{1.5em}{1em}{\makebox[1.5em][l]{\thefootnotemark}}
+\addtolength{\skip\footins}{\baselineskip} % Abstand Text <-> Fussnote
+
+\setlength{\dimen\footins}{10\baselineskip} % Beschraenkt den Platz von Fussnoten auf 10 Zeilen
+
+\interfootnotelinepenalty=10000 % Verhindert das Fortsetzen von
+                                % Fussnoten auf der gegenüberligenden Seite
+
+
+%% Schriften (Sections )==================================================
+
+\IfElsePackageLoaded{fourier}{
+   \newcommand\SectionFontStyle{\rmfamily}
+}{
+   \newcommand\SectionFontStyle{\sffamily}
+}
+
+% -- Koma Schriften --
+\IfChapterDefined{%
+   \setkomafont{chapter}{\huge\SectionFontStyle}    % Chapter
+}
+\setkomafont{sectioning}{\SectionFontStyle} %  % Titelzeilen % \bfseries
+\setkomafont{pagenumber}{\small\SectionFontStyle}             % Seitenzahl
+\setkomafont{pageheadfoot}{\small\sffamily}        % Kopfzeile
+%\setkomafont{pagefoot}{\small\sffamily}        % Kopfzeile
+\setkomafont{descriptionlabel}{\itshape}        % Kopfzeile
+%
+
+\addtokomafont{sectioning}{\color{sectioncolor}} % Farbe der Ueberschriften
+\IfChapterDefined{%
+	\addtokomafont{chapter}{\color{sectioncolor}} % Farbe der Ueberschriften
+}
+\renewcommand*{\raggedsection}{\raggedright} % Titelzeile linksbuendig, haengend
+%
+%% UeberSchriften (Chapter und Sections) =================================
+% -- Ueberschriften komlett Umdefinieren --
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
+\usepackage{titlesec}
+
+% -- Section Aussehen veraendern --
+% --------------------------------
+%% -> Section mit Unterstrich
+% \titleformat{\section}
+%   [hang]%[frame]display
+%   {\usekomafont{sectioning}\Large}
+%  {\thesection}
+%   {6pt}
+%   {}
+%   [\titlerule \vspace{0.5\baselineskip}]
+% --------------------------------
+
+% -- Chapter Aussehen veraendern --
+% --------------------------------
+%--> Box mit (Kapitel + Nummer ) +  Name
+% \titleformat{\chapter}[display]     % {command}[shape]
+%   {\usekomafont{chapter}\filcenter} % format
+%   {                                 % label
+%   {\fcolorbox{black}{shadecolor}{
+%   {\huge\chaptertitlename\mbox{\hspace{1mm}}\thechapter}
+%   }}}
+%   {1pc}                             % sep (from chapternumber)
+%   {\vspace{1pc}}                    % {before}[after] (before chaptertitle and after)
+% --------------------------------
+%--> Kapitel + Nummer + Trennlinie + Name + Trennlinie
+\titleformat{\chapter}[display]	% {command}[shape]
+  {\usekomafont{chapter}\Large \color{black}}	% format
+  {   										% label
+  \LARGE\MakeUppercase{\chaptertitlename} \Huge \thechapter \filright%
+  }%}
+  {1pt}										% sep (from chapternumber)
+  {\titlerule \vspace{0.9pc} \filright \color{sectioncolor}}   % {before}[after] (before chaptertitle and after)
+  [\color{black} \vspace{0.9pc} \filright {\titlerule}]
+
+
+%% Captions (Schrift, Aussehen) ==========================================
+
+% % Folgende Befehle werden durch das Paket caption und subfig ersetzt !
+% \setcapindent{1em} % Einrueckung der Beschriftung
+% \setkomafont{caption}{\color{black}\small\sffamily\RaggedRight}  % Schrift fuer Caption
+% \setkomafont{captionlabel}{\color{black}\small}   % Schrift fuer 'Abbildung' usw.
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+\usepackage{caption}
+% Aussehen der Captions
+\captionsetup{
+   margin = 10pt,
+   font = {small,sf},
+   labelfont = {small,bf},
+   format = plain, % oder 'hang'
+   indention = 0em,  % Einruecken der Beschriftung
+   labelsep = colon, %period, space, quad, newline
+   justification = RaggedRight, % justified, centering
+   singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
+   position = bottom %top
+}
+%%% Bugfix Workaround
+\DeclareCaptionOption{parskip}[]{}
+\DeclareCaptionOption{parindent}[]{}
+
+% Aussehen der Captions fuer subfigures (subfig-Paket)
+\IfPackageLoaded{subfig}{
+ \captionsetup[subfloat]{%
+   margin = 10pt,
+   font = {small,sf},
+   labelfont = {small,bf},
+   format = plain, % oder 'hang'
+   indention = 0em,  % Einruecken der Beschriftung
+   labelsep = space, %period, space, quad, newline
+   justification = RaggedRight, % justified, centering
+   singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
+   position = bottom, %top
+   labelformat = parens % simple, empty % Wie die Bezeichnung gesetzt wird
+ }
+}
+
+% Aendern der Bezeichnung fuer Abbildung und Tabelle
+% \addto\captionsngerman{% "captionsgerman" fuer alte  Rechschreibung
+%   \renewcommand{\figurename}{Abb.}%
+%   \renewcommand{\tablename}{Tab.}%
+% }
+
+% Caption fuer nicht fliessende Umgebungen
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/misc/capt-of.sty
+\IfPackageNotLoaded{caption}{
+	\usepackage{capt-of} % only load when caption is not loaded. Otherwise compiling will fail.
+	%Usage: \captionof{table}[short Titel]{long Titel}
+}
+%
+
+
+%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/mcaption/mcaption.pdf
+% Captions in Margins
+% \usepackage[
+% 	top,
+% 	bottom
+% ]{mcaption}
+
+%%% Example:
+% \begin{figure}
+%   \begin{margincap}[short caption]{margin caption}
+%     \centering
+%     \includegraphics{picture}
+%   \end{margincap}
+% \end{figure}
+
+
+
+% \numberwithin{figure}{chapter} %Befehl zum Kapitelweise Nummerieren der Bilder, setzt `amsmath' vorraus
+% \numberwithin{table}{chapter}  %Befehl zum Kapitelweise Nummerieren der Tabellen, setzt `amsmath' vorraus
+
+%% Inhaltsverzeichnis (Schrift, Aussehen) sowie weitere Verzeichnisse ====
+
+\setcounter{secnumdepth}{4}    % Abbildungsnummerierung mit groesserer Tiefe
+\setcounter{tocdepth}{2}		 % Inhaltsverzeichnis mit groesserer Tiefe
+%
+
+% Inhalte von List of Figures
+\IfPackageLoaded{subfig}{
+	\setcounter{lofdepth}{1}  %1 = nur figures, 2 = figures + subfigures
+}
+
+
+% Auszufuehrende Befehle  ------------------------------------------------
+\IfDefined{makeindex}{\makeindex}
+\IfDefined{makenomenclature}{\makenomenclature}
+\IfPackageLoaded{minitoc}{\ifundefined{chapter}{\dosecttoc}{\dominitoc}}
+
+
+\listfiles
+%------------------------------------------------------------------------
+
