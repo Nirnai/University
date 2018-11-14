@@ -1,0 +1,7 @@
+<library path="lib/libreemc_zmp_estimator">
+  <class name="reemc_zmp_estimator/ZmpController" type="reemc_zmp_estimator::ZmpController" base_class_type="controller_interface::ControllerBase">
+    <description>
+       The ZmpController estimates the Zero Moment Point of the Reem-C robot.
+    </description>
+  </class>
+</library>
